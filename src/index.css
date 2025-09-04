@@ -1,0 +1,176 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Design System */
+
+@layer base {
+  :root {
+    /* Modern Color Palette */
+    --background: 0 0% 2%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 3% 6%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 3% 6%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 24 100% 65%;
+    --primary-foreground: 0 0% 2%;
+
+    --secondary: 240 4% 10%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 240 4% 10%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 12 100% 62%;
+    --accent-foreground: 0 0% 2%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 24 100% 65%;
+
+    --radius: 0.75rem;
+
+    /* Modern Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(24 100% 65%), hsl(12 100% 62%));
+    --gradient-secondary: linear-gradient(135deg, hsl(240 4% 10%), hsl(240 3% 6%));
+    --gradient-glow: radial-gradient(circle at center, hsl(24 100% 65% / 0.3), transparent 70%);
+
+    /* Modern Shadows */
+    --shadow-sm: 0 2px 8px hsl(0 0% 0% / 0.1);
+    --shadow-md: 0 8px 25px hsl(0 0% 0% / 0.15);
+    --shadow-lg: 0 16px 50px hsl(0 0% 0% / 0.2);
+    --shadow-glow: 0 0 50px hsl(24 100% 65% / 0.3);
+
+    /* Typography */
+    --font-heading: 'Inter', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    /* Spacing */
+    --section-padding: 5rem 0;
+    --container-padding: 1rem;
+    
+    /* Modern Backdrop Blur */
+    --backdrop-blur: blur(16px);
+  }
+
+  .dark {
+    --background: 0 0% 2%;
+    --foreground: 0 0% 98%;
+    --card: 240 3% 6%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 3% 6%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 24 100% 65%;
+    --primary-foreground: 0 0% 2%;
+    --secondary: 240 4% 10%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 240 4% 10%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 12 100% 62%;
+    --accent-foreground: 0 0% 2%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 24 100% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+    background: radial-gradient(ellipse at center, hsl(240 4% 4%) 0%, hsl(0 0% 2%) 100%);
+    min-height: 100vh;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Modern Typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  /* Modern Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent));
+  }
+}
+
+@layer components {
+  /* Modern Glass Effect */
+  .glass {
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: var(--backdrop-blur);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  /* Modern Gradient Text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Modern Hover Effects */
+  .hover-glow {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-glow:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+
+  /* Modern Card */
+  .modern-card {
+    @apply glass rounded-2xl p-6 transition-all duration-300 hover-glow;
+  }
+
+  /* Floating Animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
